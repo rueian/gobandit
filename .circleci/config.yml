@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dockerbuild-cache
+
+      - run: docker-compose run --rm test
+
+      - save_cache:
+          key: dockerbuild-cache
+          paths:
+            - .dockerbuild
