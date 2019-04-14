@@ -1,4 +1,7 @@
 # gobandit
+
+[![CircleCI](https://circleci.com/gh/rueian/gobandit.svg?style=svg)](https://circleci.com/gh/rueian/gobandit)
+
 A golang library for solving multi armed bandit problem which can optimize your business choice on the fly without A/B testing.
 
 ## Thompson Sampling
