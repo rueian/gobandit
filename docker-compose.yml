@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  test:
+    image: golang:1.12
+    command: ["bash", "-c", "go test -v ./..."]
+    working_dir: /app
+    volumes:
+      - .dockerbuild:/go
+      - .:/app
