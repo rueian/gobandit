@@ -9,6 +9,7 @@ jobs:
           key: dockerbuild-cache
 
       - run: docker-compose run --rm test
+      - run: bash <(curl -s https://codecov.io/bash)
 
       - save_cache:
           key: dockerbuild-cache
