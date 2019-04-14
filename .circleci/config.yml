@@ -6,12 +6,14 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: dockerbuild-cache
+          keys:
+            - dockerbuild-cache-{{ checksum "go.sum" }}
+            - dockerbuild-cache-
 
       - run: docker-compose run --rm test
       - run: bash <(curl -s https://codecov.io/bash)
 
       - save_cache:
-          key: dockerbuild-cache
+          key: dockerbuild-cache-{{ checksum "go.sum" }}
           paths:
-            - .dockerbuild
+            - .dockerbuild/
