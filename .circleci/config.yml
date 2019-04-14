@@ -7,13 +7,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - dockerbuild-cache-{{ checksum "go.sum" }}
+            - dockerbuild-cache-{{ checksum "go.mod" }}
             - dockerbuild-cache-
 
       - run: docker-compose run --rm test
       - run: bash <(curl -s https://codecov.io/bash)
+      - run: sudo chown -R circleci:circleci .dockerbuild
 
       - save_cache:
-          key: dockerbuild-cache-{{ checksum "go.sum" }}
+          key: dockerbuild-cache-{{ checksum "go.mod" }}
           paths:
             - .dockerbuild/
